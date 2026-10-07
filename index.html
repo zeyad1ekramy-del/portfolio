@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YOUR NAME — Web Developer</title>
+<meta name="description" content="Portfolio of YOUR NAME, web developer. Live projects for clinics, shops and brands.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Source+Serif+4:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f1a2b;--panel:#16243a;--text:#e9eef5;--muted:#9fb0c5;--accent:#6fd0c0;--line:#27395a}
+@media (prefers-color-scheme:light){:root{--bg:#f3f6fa;--panel:#fff;--text:#12203a;--muted:#55657d;--accent:#0b7d6e;--line:#d5dde8}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.6 "Source Serif 4",Georgia,serif}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3,.btn,nav{font-family:"Bricolage Grotesque",system-ui,sans-serif}
+header{padding:28px 0;display:flex;justify-content:space-between;align-items:center}
+nav a{margin-left:22px;text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--accent)}
+.hero{padding:70px 0 90px}
+h1{font-size:clamp(42px,8vw,96px);line-height:1;margin:0 0 24px;font-weight:800;letter-spacing:-.03em}
+.hero p{max-width:560px;color:var(--muted);font-size:20px;margin:0 0 32px}
+.btn{display:inline-block;padding:12px 22px;border-radius:8px;background:var(--accent);color:#06241f;font-weight:600;text-decoration:none;margin-right:10px}
+.btn.ghost{background:none;color:var(--text);border:1px solid var(--line)}
+h2{font-size:32px;margin:0 0 36px;letter-spacing:-.01em}
+.project{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center;padding:36px 0;border-top:1px solid var(--line)}
+.project:nth-child(even) .shot{order:2}
+.shot{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel);aspect-ratio:16/10;position:relative}
+.shot:before{content:"";display:block;height:22px;background:var(--line)}
+.shot img{width:100%;height:calc(100% - 22px);object-fit:cover;object-position:top;display:block}
+.shot.nolive{display:grid;place-items:center;text-align:center;color:var(--muted);font-family:"Bricolage Grotesque",sans-serif;font-size:22px;padding:20px}
+.shot.nolive:before{position:absolute;top:0;left:0;right:0}
+h3{font-size:26px;margin:0 0 8px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 20px;padding:0;list-style:none}
+.tags li{font:600 13px "Bricolage Grotesque",sans-serif;border:1px solid var(--line);border-radius:99px;padding:3px 12px;color:var(--muted)}
+.project p{margin:0;color:var(--muted)}
+.links a{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;color:var(--accent);margin-right:20px}
+.skills{display:flex;flex-wrap:wrap;gap:10px;padding:0;list-style:none;margin:0}
+.skills li{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 16px;font-family:"Bricolage Grotesque",sans-serif}
+section{padding:50px 0}
+footer{padding:50px 0 70px;border-top:1px solid var(--line);color:var(--muted)}
+footer a{color:var(--accent)}
+@media(max-width:760px){.project{grid-template-columns:1fr;gap:20px}.project:nth-child(even) .shot{order:0}nav a{margin-left:14px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header><strong style="font-family:'Bricolage Grotesque',sans-serif">YOUR NAME</strong>
+<nav><a href="#work">Work</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav></header>
+
+<main>
+<div class="hero">
+<h1>I build websites and systems that businesses use every day.</h1>
+<p>Web developer from Egypt. Below are real projects, live online, for clinics, shops and brands.</p>
+<a class="btn" href="#work">See my work</a><a class="btn ghost" href="#contact">Hire me</a>
+</div>
+
+<section id="work" style="padding-top:0">
+<h2>Selected projects</h2>
+<div id="list"></div>
+</section>
+
+<section id="skills"><h2>Tools I use</h2>
+<ul class="skills"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Node.js</li><li>Git &amp; GitHub</li><li>Vercel</li></ul></section>
+</main>
+
+<footer id="contact"><h2>Let's work together</h2>
+<p>Email: <a href="mailto:you@example.com">you@example.com</a><br>
+WhatsApp: <a href="https://wa.me/20XXXXXXXXXX">+20 XXX XXX XXXX</a><br>
+GitHub: <a href="https://github.com/YOUR-USERNAME">github.com/YOUR-USERNAME</a></p></footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+const GH="https://github.com/YOUR-USERNAME/REPO-NAME";
+const DEFAULTS=[
+{title:"Opal Gallery",description:"A gallery website that presents work cleanly and loads fast on any device.",tags:"Website, Responsive",live_url:"https://opal-gallery19.vercel.app/",code_url:GH},
+{title:"Dr. Yasser Dental Clinic",description:"A clinic website that helps patients find services and contact the doctor.",tags:"Website, Clinic, Responsive",live_url:"https://dr-yasser-dental-clinic.vercel.app/",code_url:GH},
+{title:"Clothing Store",description:"An online clothing storefront with product browsing built for phones first.",tags:"E-commerce, Responsive",live_url:"https://clothing-website-amber-theta.vercel.app/",code_url:GH},
+{title:"Phone Shop System",description:"A desktop system built for Abu Ziad's phone shop to manage daily sales and stock. It runs on the shop's computer, so there is no public site.",tags:"Desktop app, Server",live_url:"https://phone-shop-server-one.vercel.app/",live_label:"Server",is_desktop:true,code_url:GH}];
+const esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const url=u=>/^https?:\/\//.test(u||"")?esc(u):"";
+function card(p){
+ const live=url(p.live_url),code=url(p.code_url);
+ let img=url(p.image_url);if(!img&&live&&!p.is_desktop)img="https://image.thum.io/get/width/900/"+live;
+ const shot=img?`<${live?'a href="'+live+'" target="_blank" rel="noopener"':'div'} class="shot"><img loading="lazy" alt="Screenshot of ${esc(p.title)}" src="${img}"></${live?'a':'div'}>`
+  :`<div class="shot nolive"><span>${p.is_desktop?"Desktop application":esc(p.title)}</span></div>`;
+ const tags=String(p.tags||"").split(",").map(t=>t.trim()).filter(Boolean).map(t=>`<li>${esc(t)}</li>`).join("");
+ const links=(live?`<a href="${live}" target="_blank" rel="noopener">${esc(p.live_label||"Live site")}</a>`:"")+(code?`<a href="${code}" target="_blank" rel="noopener">Code</a>`:"");
+ return `<article class="project">${shot}<div><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><ul class="tags">${tags}</ul><div class="links">${links}</div></div></article>`;}
+async function load(){let list=DEFAULTS;
+ if(window.CFG&&/^https?:/.test(CFG.SUPABASE_URL)){try{
+  const c=supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY);
+  const{data,error}=await c.from("projects").select("*").order("created_at",{ascending:false});
+  if(!error&&data&&data.length)list=data;}catch(e){}}
+ document.getElementById("list").innerHTML=list.map(card).join("");}
+load();
+</script>
+</body>
+</html>
