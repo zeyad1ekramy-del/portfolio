@@ -5,15 +5,18 @@
 :root{--bg:#0f1a2b;--panel:#16243a;--text:#e9eef5;--muted:#9fb0c5;--accent:#6fd0c0;--line:#27395a}
 @media (prefers-color-scheme:light){:root{--bg:#f3f6fa;--panel:#fff;--text:#12203a;--muted:#55657d;--accent:#0b7d6e;--line:#d5dde8}}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,sans-serif}
-.w{max-width:720px;margin:0 auto;padding:24px}
+.w{max-width:760px;margin:0 auto;padding:24px}
 label{display:block;margin:14px 0 4px;color:var(--muted);font-size:14px}
-input[type=text],input[type=email],input[type=password],input[type=url],textarea{width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--text);font:inherit}
-.chk{display:flex;gap:8px;align-items:center;margin:14px 0 4px;color:var(--text)}
+input[type=text],input[type=email],input[type=password],input[type=url],input[type=number],textarea{width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--text);font:inherit}
+.chk{display:flex;gap:8px;align-items:center;margin:14px 0 4px}.chk label{margin:0;color:var(--text)}
 button{padding:10px 18px;border-radius:8px;border:0;background:var(--accent);color:#06241f;font-weight:600;cursor:pointer;margin:16px 8px 0 0}
 button.g{background:none;color:var(--text);border:1px solid var(--line)}button.d{background:#c0392b;color:#fff}
 .row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
 .row button{margin:0 0 0 6px;padding:6px 12px}
-#msg{margin-top:12px;color:var(--accent)}.hide{display:none}
+.box{border:1px solid var(--line);border-radius:12px;padding:6px 18px 18px;margin:20px 0;background:var(--panel)}
+.box input,.box textarea{background:var(--bg)}
+.msg{margin-top:12px;color:var(--accent)}.hide{display:none}
+.hint{font-size:13px;color:var(--muted);margin:4px 0 0}
 </style></head><body><div class="w">
 <h1>Portfolio admin</h1>
 <div id="login">
@@ -21,19 +24,19 @@ button.g{background:none;color:var(--text);border:1px solid var(--line)}button.d
 <button id="in">Sign in</button></div>
 
 <div id="app" class="hide">
-<button class="g" id="out">Sign out</button> <a href="index.html" style="color:var(--accent)">View site</a>
-<h2 id="ft">Add project</h2>
-<label>Title</label><input type="text" id="title">
-<label>Description</label><textarea id="desc" rows="3"></textarea>
-<label>Tags (comma separated)</label><input type="text" id="tags" placeholder="Website, Responsive">
-<label>Live site link (optional)</label><input type="url" id="live">
-<div class="chk"><input type="checkbox" id="desk"><label for="desk" style="margin:0;color:var(--text)">Desktop app (no screenshot, no public site)</label></div>
-<div class="chk"><input type="checkbox" id="showcode"><label for="showcode" style="margin:0;color:var(--text)">Show "Code" button</label></div>
+<button class="g" id="out" style="margin-top:0">Sign out</button> <a href="index.html" style="color:var(--accent)">View site</a>
+
+<div class="box"><h2>Site info</h2><div id="sform"></div><button id="ssave">Save site info</button><div class="msg" id="smsg"></div></div>
+
+<div class="box"><h2 id="ft">Add project</h2><div id="pform"></div>
+<div class="chk"><input type="checkbox" id="desk"><label for="desk">Desktop app (no public site, no auto screenshot)</label></div>
+<div class="chk"><input type="checkbox" id="showcode"><label for="showcode">Show "Code" button</label></div>
 <div id="codebox" class="hide"><label>Code link (GitHub repo)</label><input type="url" id="code"></div>
-<label>Screenshot: upload a file</label><input type="file" id="file" accept="image/*">
-<label>or paste an image link (leave both empty to auto-capture from the live site)</label><input type="url" id="img">
+<button class="g" id="auto" type="button">Auto-fill from links</button> <span class="hint" id="amsg">Fill the live link (and the code link for languages), then click. It fills only empty fields.</span>
+<div id="iform"></div>
 <button id="save">Save project</button><button class="g hide" id="cancel">Cancel edit</button>
-<div id="msg"></div>
+<div class="msg" id="msg"></div></div>
+
 <h2>Your projects</h2><div id="items"></div>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -41,41 +44,97 @@ button.g{background:none;color:var(--text);border:1px solid var(--line)}button.d
 <script>
 const $=id=>document.getElementById(id);
 const sb=supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY);
-let editing=null,rows=[];
-const say=t=>$('msg').textContent=t;
+// [id, label, type, column, hint]
+const PF=[['title','Title','text','title'],['desc','Short description (shown on the card)','a2','description'],
+['long','Full description (new line = new paragraph)','a6','long_description'],['features','Features (one per line)','a5','features'],
+['tech','Tech used (comma separated)','text','tech'],['tags','Card tags (comma separated)','text','tags'],
+['langs','Languages used (e.g. JavaScript:60, CSS:30, HTML:10)','text','languages'],['hosting','Hosting (e.g. Vercel)','text','hosting'],['client','Client','text','client'],['year','Year','text','year'],['live','Live site link','url','live_url'],['sort','Order (smaller number shows first)','number','sort_order']];
+const IM=[['cover','Card image','image_url','Shown on the card. If empty, desktop screenshot or an auto screenshot is used.'],
+['dimg','Desktop screenshot','desktop_image_url','Shown in the details window.'],['mimg','Mobile screenshot','mobile_image_url','Shown in a phone frame. Leave empty to hide it.']];
+const SF=[['s_name','Your name','text','name'],['s_head','Headline (big text on top)','a2','headline'],['s_about','Short intro','a2','about'],
+['s_email','Email','text','email'],['s_wa','WhatsApp number (with country code)','text','whatsapp'],['s_gh','GitHub username or link','text','github']];
+const field=([id,l,t])=>`<label for="${id}">${l}</label>`+(t[0]=='a'?`<textarea id="${id}" rows="${t[1]}"></textarea>`:`<input type="${t}" id="${id}">`);
+$('pform').innerHTML=PF.map(field).join('');
+$('sform').innerHTML=SF.map(field).join('');
+$('iform').innerHTML=IM.map(([k,l,,h])=>`<label>${l} — upload a file</label><input type="file" id="${k}_f" accept="image/*"><label for="${k}">or paste an image link</label><input type="url" id="${k}"><img id="${k}_p" alt="" style="max-width:220px;display:none;margin-top:8px"><p class="hint">${h}</p>`).join('');
+let editing=null;
+const say=(t,id='msg')=>$(id).textContent=t;
 $('showcode').onchange=()=>$('codebox').classList.toggle('hide',!$('showcode').checked);
+
 async function gate(){const{data}=await sb.auth.getSession();const ok=!!data.session;
- $('login').classList.toggle('hide',ok);$('app').classList.toggle('hide',!ok);if(ok)list();}
+ $('login').classList.toggle('hide',ok);$('app').classList.toggle('hide',!ok);if(ok){list();loadS();}}
 $('in').onclick=async()=>{const{error}=await sb.auth.signInWithPassword({email:$('em').value,password:$('pw').value});
  if(error)alert('Login failed: '+error.message);else gate();};
+$('pw').onkeydown=e=>{if(e.key==='Enter')$('in').click();};
 $('out').onclick=async()=>{await sb.auth.signOut();gate();};
-async function list(){const{data,error}=await sb.from('projects').select('*').order('created_at',{ascending:false});
- if(error){say(error.message);return;}rows=data;$('items').innerHTML='';
- rows.forEach(p=>{const d=document.createElement('div');d.className='row';
+
+async function loadS(){const{data}=await sb.from('site_settings').select('*').eq('id',1).maybeSingle();
+ if(data)SF.forEach(([id,,,c])=>$(id).value=data[c]||'');}
+$('ssave').onclick=async()=>{const row={id:1};SF.forEach(([id,,,c])=>row[c]=$(id).value.trim()||null);
+ const{error}=await sb.from('site_settings').upsert(row);say(error?error.message:'Saved','smsg');};
+
+async function list(){const{data,error}=await sb.from('projects').select('*').order('sort_order',{ascending:true}).order('created_at',{ascending:false});
+ if(error){say(error.message);return;}$('items').innerHTML=data.length?'':'<p class="hint">No projects yet. Add your first one above.</p>';
+ data.forEach(p=>{const d=document.createElement('div');d.className='row';
   d.innerHTML='<span></span><span><button class="g">Edit</button><button class="d">Delete</button></span>';
   d.firstChild.textContent=p.title;const[b1,b2]=d.querySelectorAll('button');
   b1.onclick=()=>edit(p);b2.onclick=()=>del(p);$('items').appendChild(d);});}
-function edit(p){editing=p.id;$('ft').textContent='Edit project';$('title').value=p.title||'';$('desc').value=p.description||'';
- $('tags').value=p.tags||'';$('live').value=p.live_url||'';$('desk').checked=!!p.is_desktop;
- $('showcode').checked=!!p.code_url;$('codebox').classList.toggle('hide',!p.code_url);$('code').value=p.code_url||'';
- $('img').value=p.image_url||'';$('cancel').classList.remove('hide');scrollTo(0,0);}
-function reset(){editing=null;$('ft').textContent='Add project';['title','desc','tags','live','code','img'].forEach(i=>$(i).value='');
- $('desk').checked=$('showcode').checked=false;$('codebox').classList.add('hide');$('file').value='';$('cancel').classList.add('hide');}
+function edit(p){editing=p.id;$('ft').textContent='Edit project';
+ PF.forEach(([id,,,c])=>$(id).value=p[c]??(id==='sort'?0:''));IM.forEach(([k,,c])=>{$(k).value=p[c]||'';$(k+'_f').value='';});
+ $('desk').checked=!!p.is_desktop;$('showcode').checked=!!p.code_url;$('codebox').classList.toggle('hide',!p.code_url);$('code').value=p.code_url||'';
+ $('cancel').classList.remove('hide');prev();scrollTo(0,0);}
+function reset(){editing=null;$('ft').textContent='Add project';PF.forEach(([id])=>$(id).value='');$('sort').value=0;
+ IM.forEach(([k])=>{$(k).value='';$(k+'_f').value='';});$('code').value='';
+ $('desk').checked=$('showcode').checked=false;$('codebox').classList.add('hide');$('cancel').classList.add('hide');prev();}
 $('cancel').onclick=reset;
 async function del(p){if(!confirm('Delete "'+p.title+'"?'))return;
  const{error}=await sb.from('projects').delete().eq('id',p.id);say(error?error.message:'Deleted');list();}
+async function img(k){const f=$(k+'_f').files[0];if(!f)return $(k).value.trim()||null;
+ const path=Date.now()+'-'+k+'-'+f.name.replace(/[^\w.-]/g,'_');
+ const{error}=await sb.storage.from('project-images').upload(path,f);if(error)throw error;
+ return sb.storage.from('project-images').getPublicUrl(path).data.publicUrl;}
 $('save').onclick=async()=>{
  if(!$('title').value.trim()){say('Title is required');return;}
- say('Saving...');let image=$('img').value.trim();const f=$('file').files[0];
- if(f){const path=Date.now()+'-'+f.name.replace(/[^\w.-]/g,'_');
-  const{error}=await sb.storage.from('project-images').upload(path,f);
-  if(error){say('Upload failed: '+error.message);return;}
-  image=sb.storage.from('project-images').getPublicUrl(path).data.publicUrl;}
- const row={title:$('title').value.trim(),description:$('desc').value.trim(),tags:$('tags').value.trim(),
-  live_url:$('live').value.trim()||null,is_desktop:$('desk').checked,
-  code_url:$('showcode').checked?($('code').value.trim()||null):null,image_url:image||null};
- const q=editing?sb.from('projects').update(row).eq('id',editing):sb.from('projects').insert(row);
- const{error}=await q;if(error){say(error.message);return;}
- say('Saved');reset();list();};
+ say('Saving...');
+ try{
+  const row={is_desktop:$('desk').checked,code_url:$('showcode').checked?($('code').value.trim()||null):null};
+  PF.forEach(([id,,,c])=>row[c]=$(id).value.trim()||null);
+  row.sort_order=Number($('sort').value)||0;
+  for(const[k,,c]of IM)row[c]=await img(k);
+  const{error}=await(editing?sb.from('projects').update(row).eq('id',editing):sb.from('projects').insert(row));
+  if(error)throw error;
+  say('Saved');reset();list();
+ }catch(e){say('Error: '+(e.message||e));}};
+const csvv=s=>String(s||'').split(',').map(t=>t.trim()).filter(Boolean);
+function prev(){IM.forEach(([k])=>{const i=$(k+'_p'),v=$(k).value.trim();i.src=v;i.style.display=v?'block':'none';});}
+IM.forEach(([k])=>$(k).oninput=prev);
+const ghRepo=u=>(u.match(/github\.com\/([^\/\s]+)\/([^\/\s#?]+)/)||[]).slice(1,3);
+$('auto').onclick=async()=>{
+ const live=$('live').value.trim(),code=$('code').value.trim();
+ if(!live&&!code){$('amsg').textContent='Add the live link or the code link first.';return;}
+ $('auto').disabled=true;const note=[];
+ const fill=(id,v)=>{if(v&&!$(id).value.trim())$(id).value=v;};
+ try{
+  if(live){$('amsg').textContent='Analyzing the site and taking screenshots... this can take up to a minute.';
+   const{data,error}=await sb.functions.invoke('analyze-site',{body:{url:live}});
+   if(error)throw error;if(data.error)throw new Error(data.error);
+   fill('title',(data.title||'').split(/\s[|\-\u2013\u2014]\s/)[0].trim());
+   fill('desc',data.description);
+   fill('long',[data.description,(data.sections||[]).length?'Main sections: '+data.sections.join(', ')+'.':''].filter(Boolean).join('\n'));
+   fill('features',(data.sections||[]).join('\n'));
+   $('tech').value=[...new Set([...csvv($('tech').value),...(data.tech||[])])].join(', ');
+   fill('hosting',data.hosting);
+   fill('dimg',data.desktop_image);fill('mimg',data.mobile_image);fill('cover',data.desktop_image);
+   (data.warnings||[]).forEach(w=>note.push(w));}
+  const[o,r]=ghRepo(code);
+  if(o){const g=await fetch('https://api.github.com/repos/'+o+'/'+r.replace(/\.git$/,'')+'/languages');
+   if(g.ok){const L=await g.json();const tot=Object.values(L).reduce((x,y)=>x+y,0)||1;
+    $('langs').value=Object.entries(L).map(([n,b])=>n+':'+(b/tot*100).toFixed(1)).join(', ');
+    $('tech').value=[...new Set([...csvv($('tech').value),...Object.keys(L)])].join(', ');}
+   else note.push('Could not read the GitHub repo (it may be private).');}
+  else if(code)note.push('The code link is not a GitHub repo link.');
+  prev();$('amsg').textContent='Done. Review the fields, then save.'+(note.length?' Notes: '+note.join(' '):'');
+ }catch(e){$('amsg').textContent='Failed: '+(e.message||e);}
+ $('auto').disabled=false;};
 gate();
 </script></body></html>

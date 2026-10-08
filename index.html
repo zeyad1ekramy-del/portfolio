@@ -3,8 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>YOUR NAME — Web Developer</title>
-<meta name="description" content="Portfolio of YOUR NAME, web developer. Live projects for clinics, shops and brands.">
+<title>Your Name — Web Developer</title>
+<meta name="description" content="Web developer portfolio with live projects for clinics, shops and brands.">
+<meta property="og:title" content="Web Developer Portfolio">
+<meta property="og:description" content="Live projects for clinics, shops and brands.">
+<meta name="theme-color" content="#0f1a2b">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💼</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Source+Serif+4:wght@400&display=swap" rel="stylesheet">
 <style>
@@ -16,7 +20,7 @@ body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.6 "Source S
 a{color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-h1,h2,h3,.btn,nav{font-family:"Bricolage Grotesque",system-ui,sans-serif}
+h1,h2,h3,.btn,nav,button{font-family:"Bricolage Grotesque",system-ui,sans-serif}
 header{padding:28px 0;display:flex;justify-content:space-between;align-items:center}
 nav a{margin-left:22px;text-decoration:none;color:var(--muted)}
 nav a:hover{color:var(--accent)}
@@ -26,78 +30,129 @@ h1{font-size:clamp(42px,8vw,96px);line-height:1;margin:0 0 24px;font-weight:800;
 .btn{display:inline-block;padding:12px 22px;border-radius:8px;background:var(--accent);color:#06241f;font-weight:600;text-decoration:none;margin-right:10px}
 .btn.ghost{background:none;color:var(--text);border:1px solid var(--line)}
 h2{font-size:32px;margin:0 0 36px;letter-spacing:-.01em}
-.project{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center;padding:36px 0;border-top:1px solid var(--line)}
+.project{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center;padding:36px 0;border-top:1px solid var(--line);cursor:pointer}
 .project:nth-child(even) .shot{order:2}
 .shot{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel);aspect-ratio:16/10;position:relative}
 .shot:before{content:"";display:block;height:22px;background:var(--line)}
 .shot img{width:100%;height:calc(100% - 22px);object-fit:cover;object-position:top;display:block}
-.shot.nolive{display:grid;place-items:center;text-align:center;color:var(--muted);font-family:"Bricolage Grotesque",sans-serif;font-size:22px;padding:20px}
+.shot.nolive{display:grid;place-items:center;text-align:center;color:var(--muted);font-size:22px;padding:20px}
 .shot.nolive:before{position:absolute;top:0;left:0;right:0}
 h3{font-size:26px;margin:0 0 8px}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 20px;padding:0;list-style:none}
 .tags li{font:600 13px "Bricolage Grotesque",sans-serif;border:1px solid var(--line);border-radius:99px;padding:3px 12px;color:var(--muted)}
 .project p{margin:0;color:var(--muted)}
-.links a{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;color:var(--accent);margin-right:20px}
+.links{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center}
+.links a{font-weight:600;color:var(--accent)}
+.more{background:var(--accent);color:#06241f;border:0;border-radius:8px;padding:8px 16px;font-weight:600;cursor:pointer;font-size:15px}
 .skills{display:flex;flex-wrap:wrap;gap:10px;padding:0;list-style:none;margin:0}
 .skills li{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 16px;font-family:"Bricolage Grotesque",sans-serif}
 section{padding:50px 0}
 footer{padding:50px 0 70px;border-top:1px solid var(--line);color:var(--muted)}
 footer a{color:var(--accent)}
-@media(max-width:760px){.project{grid-template-columns:1fr;gap:20px}.project:nth-child(even) .shot{order:0}nav a{margin-left:14px}}
+.empty{color:var(--muted);padding:30px 0}
+dialog{max-width:920px;width:calc(100% - 24px);max-height:92vh;overflow:auto;border:1px solid var(--line);border-radius:14px;background:var(--bg);color:var(--text);padding:0}
+dialog::backdrop{background:rgba(5,10,20,.75)}
+.dw{padding:28px}
+.x{position:sticky;top:0;float:right;margin:12px 12px 0 0;background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:8px;padding:6px 14px;cursor:pointer;z-index:2}
+.meta{display:flex;gap:18px;color:var(--muted);margin:0 0 20px;font-size:15px}
+.gal{display:grid;gap:24px;align-items:end;margin:0 0 28px}
+.gal.both{grid-template-columns:1fr 200px}
+.bf{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.bf:before{content:"";display:block;height:22px;background:var(--line)}
+.bf img{display:block;width:100%}
+.ph{border:7px solid var(--line);border-radius:28px;overflow:hidden;background:var(--panel)}
+.ph img{display:block;width:100%}
+.cap{font-size:13px;color:var(--muted);margin:8px 0 0;text-align:center}
+.dw h4{font-family:"Bricolage Grotesque",sans-serif;font-size:20px;margin:26px 0 10px}
+.dw ul.f{padding-left:20px;margin:0;color:var(--muted)}
+.dw p{color:var(--muted);margin:0 0 12px}
+.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:0 0 24px;padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.specs dt{font-size:13px;color:var(--muted)}.specs dd{margin:0;font-weight:600;font-family:"Bricolage Grotesque",sans-serif}
+.lbar{display:flex;height:10px;border-radius:6px;overflow:hidden;background:var(--line)}.lbar span{display:block}
+.lleg{display:flex;flex-wrap:wrap;gap:6px 18px;list-style:none;padding:0;margin:10px 0 0;color:var(--muted);font-size:14px}
+.lleg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+@media(max-width:760px){.project{grid-template-columns:1fr;gap:20px}.project:nth-child(even) .shot{order:0}nav a{margin-left:14px}.gal.both{grid-template-columns:1fr}.ph{max-width:220px;margin:0 auto}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<header><strong style="font-family:'Bricolage Grotesque',sans-serif">YOUR NAME</strong>
+<header><strong id="nm" style="font-family:'Bricolage Grotesque',sans-serif">Your Name</strong>
 <nav><a href="#work">Work</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav></header>
-
 <main>
 <div class="hero">
-<h1>I build websites and systems that businesses use every day.</h1>
-<p>Web developer from Egypt. Below are real projects, live online, for clinics, shops and brands.</p>
+<h1 id="hl">I build websites and systems that businesses use every day.</h1>
+<p id="ab">Web developer from Egypt. Below are real projects, live online, for clinics, shops and brands.</p>
 <a class="btn" href="#work">See my work</a><a class="btn ghost" href="#contact">Hire me</a>
 </div>
-
-<section id="work" style="padding-top:0">
-<h2>Selected projects</h2>
-<div id="list"></div>
-</section>
-
-<section id="skills"><h2>Tools I use</h2>
-<ul class="skills"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Node.js</li><li>Git &amp; GitHub</li><li>Vercel</li></ul></section>
+<section id="work" style="padding-top:0"><h2>Selected projects</h2><div id="list"><p class="empty">Loading projects…</p></div></section>
+<section id="skills"><h2>Tools I use</h2><ul class="skills" id="sk"></ul></section>
 </main>
-
-<footer id="contact"><h2>Let's work together</h2>
-<p>Email: <a href="mailto:you@example.com">you@example.com</a><br>
-WhatsApp: <a href="https://wa.me/20XXXXXXXXXX">+20 XXX XXX XXXX</a><br>
-GitHub: <a href="https://github.com/YOUR-USERNAME">github.com/YOUR-USERNAME</a></p></footer>
+<footer id="contact"><h2>Let's work together</h2><p id="cl">Contact details coming soon.</p></footer>
 </div>
+<dialog id="dlg" aria-labelledby="dt"><button class="x" id="dx">Close</button><div class="dw" id="db"></div></dialog>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js"></script>
 <script>
-const GH="https://github.com/YOUR-USERNAME/REPO-NAME";
-const DEFAULTS=[
-{title:"Opal Gallery",description:"A gallery website that presents work cleanly and loads fast on any device.",tags:"Website, Responsive",live_url:"https://opal-gallery19.vercel.app/",code_url:GH},
-{title:"Dr. Yasser Dental Clinic",description:"A clinic website that helps patients find services and contact the doctor.",tags:"Website, Clinic, Responsive",live_url:"https://dr-yasser-dental-clinic.vercel.app/",code_url:GH},
-{title:"Clothing Store",description:"An online clothing storefront with product browsing built for phones first.",tags:"E-commerce, Responsive",live_url:"https://clothing-website-amber-theta.vercel.app/",code_url:GH},
-{title:"Phone Shop System",description:"A desktop system built for Abu Ziad's phone shop to manage daily sales and stock. It runs on the shop's computer, so there is no public site.",tags:"Desktop app, Server",live_url:"https://phone-shop-server-one.vercel.app/",live_label:"Server",is_desktop:true,code_url:GH}];
+const $=id=>document.getElementById(id);
 const esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const url=u=>/^https?:\/\//.test(u||"")?esc(u):"";
-function card(p){
- const live=url(p.live_url),code=url(p.code_url);
- let img=url(p.image_url);if(!img&&live&&!p.is_desktop)img="https://image.thum.io/get/width/900/"+live;
- const shot=img?`<${live?'a href="'+live+'" target="_blank" rel="noopener"':'div'} class="shot"><img loading="lazy" alt="Screenshot of ${esc(p.title)}" src="${img}"></${live?'a':'div'}>`
-  :`<div class="shot nolive"><span>${p.is_desktop?"Desktop application":esc(p.title)}</span></div>`;
- const tags=String(p.tags||"").split(",").map(t=>t.trim()).filter(Boolean).map(t=>`<li>${esc(t)}</li>`).join("");
- const links=(live?`<a href="${live}" target="_blank" rel="noopener">${esc(p.live_label||"Live site")}</a>`:"")+(code?`<a href="${code}" target="_blank" rel="noopener">Code</a>`:"");
- return `<article class="project">${shot}<div><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><ul class="tags">${tags}</ul><div class="links">${links}</div></div></article>`;}
-async function load(){let list=DEFAULTS;
+const csv=s=>String(s||"").split(",").map(t=>t.trim()).filter(Boolean);
+const lines=s=>String(s||"").split("\n").map(t=>t.trim()).filter(Boolean);
+const auto=(p,w)=>url(p.live_url)&&!p.is_desktop?"https://image.thum.io/get/width/"+w+"/"+url(p.live_url):"";
+const cover=p=>url(p.image_url)||url(p.desktop_image_url)||auto(p,900);
+const desk=p=>url(p.desktop_image_url)||url(p.image_url)||auto(p,1200);
+const li=a=>a.map(t=>`<li>${esc(t)}</li>`).join("");
+const DEFAULTS=[
+{title:"Opal Gallery",description:"A gallery website that presents work cleanly and loads fast on any device.",tags:"Website, Responsive",live_url:"https://opal-gallery19.vercel.app/"},
+{title:"Dr. Yasser Dental Clinic",description:"A clinic website that helps patients find services and contact the doctor.",tags:"Website, Clinic, Responsive",live_url:"https://dr-yasser-dental-clinic.vercel.app/"},
+{title:"Clothing Store",description:"An online clothing storefront with product browsing built for phones first.",tags:"E-commerce, Responsive",live_url:"https://clothing-website-amber-theta.vercel.app/"},
+{title:"Phone Shop System",description:"A desktop system built for a phone shop to manage daily sales and stock. It runs on the shop's computer, so there is no public site.",tags:"Desktop app, Server",live_url:"https://phone-shop-server-one.vercel.app/",live_label:"Server",is_desktop:true}];
+let L=[];
+function card(p,i){
+ const c=cover(p),live=url(p.live_url),code=url(p.code_url);
+ const sh=c?`<div class="shot"><img loading="lazy" alt="" src="${c}" onerror="this.remove()"></div>`:`<div class="shot nolive"><span>${p.is_desktop?"Desktop application":esc(p.title)}</span></div>`;
+ return `<article class="project" data-i="${i}">${sh}<div><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><ul class="tags">${li(csv(p.tags))}</ul><div class="links"><button class="more" data-i="${i}">View details</button>${live?`<a href="${live}" target="_blank" rel="noopener">${esc(p.live_label||"Live site")}</a>`:""}${code?`<a href="${code}" target="_blank" rel="noopener">Code</a>`:""}</div></div></article>`;}
+function openP(i){
+ const p=L[i],live=url(p.live_url),code=url(p.code_url),d=desk(p),m=url(p.mobile_image_url);
+ const gal=(d||m)?`<div class="gal ${d&&m?"both":""}">${d?`<div><div class="bf"><img src="${d}" alt="${esc(p.title)} on desktop" onerror="this.closest('.gal').remove()"></div><p class="cap">Desktop</p></div>`:""}${m?`<div><div class="ph"><img src="${m}" alt="${esc(p.title)} on mobile"></div><p class="cap">Mobile</p></div>`:""}</div>`:"";
+ const sp=[["Type",p.is_desktop?"Desktop application":"Website"],["Hosting",p.hosting],["Client",p.client],["Year",p.year]].filter(x=>x[1]).map(x=>`<div><dt>${x[0]}</dt><dd>${esc(x[1])}</dd></div>`).join("");
+ const meta=`<dl class="specs">${sp}</dl>`;
+ const COL=["#6fd0c0","#f5c26b","#7aa2ff","#ff8fa3","#b79cff","#8bd17c"];
+ const ls=csv(p.languages).map(x=>x.split(":")).map(a=>[a[0].trim(),parseFloat(a[1])||0]).filter(x=>x[0]);
+ const lg=ls.length?`<h4>Languages used</h4><div class="lbar">${ls.map((l,i)=>`<span style="flex:${l[1]||1};background:${COL[i%6]}"></span>`).join("")}</div><ul class="lleg">${ls.map((l,i)=>`<li><i style="background:${COL[i%6]}"></i>${esc(l[0])}${l[1]?" "+l[1]+"%":""}</li>`).join("")}</ul>`:"";
+ const paras=lines(p.long_description||p.description).map(t=>`<p>${esc(t)}</p>`).join("");
+ const f=lines(p.features),t=csv(p.tech);
+ $("db").innerHTML=`<h2 id="dt" style="margin-bottom:10px">${esc(p.title)}</h2>${meta}${gal}${paras}${f.length?`<h4>Features</h4><ul class="f">${li(f)}</ul>`:""}${lg}${t.length?`<h4>Built with</h4><ul class="tags">${li(t)}</ul>`:""}<div class="links" style="margin-top:22px">${live?`<a class="btn" href="${live}" target="_blank" rel="noopener">${esc(p.live_label||"Visit live site")}</a>`:""}${code?`<a class="btn ghost" href="${code}" target="_blank" rel="noopener">View code</a>`:""}</div>`;
+ $("dlg").showModal();if(p.id)history.replaceState(null,"","#p="+p.id);}
+$("list").onclick=e=>{if(e.target.closest("a"))return;const a=e.target.closest(".project");if(a)openP(+a.dataset.i);};
+$("dx").onclick=()=>$("dlg").close();
+$("dlg").onclose=()=>history.replaceState(null,"",location.pathname+location.search);
+$("dlg").onclick=e=>{if(e.target===$("dlg"))$("dlg").close();};
+function settings(s){
+ if(!s)return;
+ if(s.name){$("nm").textContent=s.name;document.title=s.name+" — Web Developer";}
+ if(s.headline)$("hl").textContent=s.headline;
+ if(s.about)$("ab").textContent=s.about;
+ const c=[];
+ if(s.email)c.push(`Email: <a href="mailto:${esc(s.email)}">${esc(s.email)}</a>`);
+ if(s.whatsapp)c.push(`WhatsApp: <a href="https://wa.me/${esc(String(s.whatsapp).replace(/\D/g,""))}">${esc(s.whatsapp)}</a>`);
+ if(s.github){const g=/^https?:/.test(s.github)?s.github:"https://github.com/"+s.github.replace(/^@/,"");c.push(`GitHub: <a href="${esc(g)}" target="_blank" rel="noopener">${esc(g.replace(/^https?:\/\//,""))}</a>`);}
+ if(c.length)$("cl").innerHTML=c.join("<br>");}
+async function load(){
+ let list=DEFAULTS;
  if(window.CFG&&/^https?:/.test(CFG.SUPABASE_URL)){try{
   const c=supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY);
-  const{data,error}=await c.from("projects").select("*").order("created_at",{ascending:false});
-  if(!error&&data&&data.length)list=data;}catch(e){}}
- document.getElementById("list").innerHTML=list.map(card).join("");}
+  const[pr,st]=await Promise.all([
+   c.from("projects").select("*").order("sort_order",{ascending:true}).order("created_at",{ascending:false}),
+   c.from("site_settings").select("*").eq("id",1).maybeSingle()]);
+  if(!pr.error&&pr.data&&pr.data.length)list=pr.data;
+  settings(st.data);}catch(e){}}
+ L=list;
+ $("list").innerHTML=list.map(card).join("");
+ const tech=[...new Set(list.flatMap(p=>csv(p.tech)))];
+ $("sk").innerHTML=li(tech.length?tech:["HTML","CSS","JavaScript","Node.js","Git & GitHub","Vercel"]);
+ const m=location.hash.match(/^#p=(.+)$/);if(m){const k=L.findIndex(p=>String(p.id)===m[1]);if(k>-1)openP(k);}}
 load();
 </script>
 </body>
