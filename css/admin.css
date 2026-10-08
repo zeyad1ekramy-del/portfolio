@@ -1,0 +1,41 @@
+/* ============================================================
+   admin.css — تنسيق صفحة الأدمن (admin.html)
+   ============================================================ */
+
+/* الألوان (فاتح/غامق حسب إعدادات جهازك) */
+:root{--bg:#0f1a2b;--panel:#16243a;--text:#e9eef5;--muted:#9fb0c5;--accent:#6fd0c0;--line:#27395a}
+@media (prefers-color-scheme:light){
+  :root{--bg:#f3f6fa;--panel:#fff;--text:#12203a;--muted:#55657d;--accent:#0b7d6e;--line:#d5dde8}
+}
+
+/* الأساسيات */
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,sans-serif}
+.w{max-width:760px;margin:0 auto;padding:24px}   /* حاوية الصفحة */
+
+/* الحقول */
+label{display:block;margin:14px 0 4px;color:var(--muted);font-size:14px}
+input[type=text],input[type=email],input[type=password],input[type=url],input[type=number],textarea{
+  width:100%;padding:10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--text);font:inherit}
+.chk{display:flex;gap:8px;align-items:center;margin:14px 0 4px}.chk label{margin:0;color:var(--text)}   /* صف الـ checkbox */
+
+/* الأزرار: عادي أساسي / .g شفاف / .d أحمر للحذف */
+button{padding:10px 18px;border-radius:8px;border:0;background:var(--accent);color:#06241f;font-weight:600;cursor:pointer;margin:16px 8px 0 0}
+button.g{background:none;color:var(--text);border:1px solid var(--line)}
+button.d{background:#c0392b;color:#fff}
+
+/* صف في القائمة (مشروع أو رسالة) */
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.row button{margin:0 0 0 6px;padding:6px 12px}
+
+/* البوكس (كل قسم في الصفحة) */
+.box{border:1px solid var(--line);border-radius:12px;padding:6px 18px 18px;margin:20px 0;background:var(--panel)}
+.box input,.box textarea{background:var(--bg)}
+
+/* رسائل وتلميحات */
+.msg{margin-top:12px;color:var(--accent)}
+.hint{font-size:13px;color:var(--muted);margin:4px 0 0}
+.hide{display:none}   /* بيخفي العنصر (بيتضاف/بيتشال بالـ JS) */
+
+/* معاينة الصورة الشخصية (دايرة) */
+#av_p{width:120px;height:120px;border-radius:50%;object-fit:cover;display:none;margin-top:10px;border:1px solid var(--line)}

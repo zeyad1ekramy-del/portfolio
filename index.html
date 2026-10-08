@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ===== بيانات الـ SEO ومشاركة اللينك (غيّرها لو غيّرت اسمك أو وصفك) ===== -->
 <title>Zeyad Ekramy | Web Developer</title>
 <meta name="description" content="Zeyad Ekramy is a Web Developer from Egypt specializing in modern, responsive, and high-performance websites.">
 <meta property="og:type" content="website">
@@ -10,173 +12,50 @@
 <meta property="og:description" content="Modern, responsive, and high-performance websites by Zeyad Ekramy, Web Developer from Egypt.">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#050505">
+
+<!-- أيقونة التبويب (ZE) -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><rect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%23050505%22/><text x=%2232%22 y=%2243%22 font-size=%2228%22 font-family=%22sans-serif%22 font-weight=%22700%22 fill=%22%2322d3ee%22 text-anchor=%22middle%22>ZE</text></svg>">
+
+<!-- بيضيف class="js" للصفحة فورًا، وده اللي بيفعّل أنيميشن الظهور (.rv) في الـ CSS -->
 <script>document.documentElement.classList.add("js")</script>
+
+<!-- الخطوط -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#050505;--card:rgba(255,255,255,.04);--bd:rgba(255,255,255,.09);--tx:#fff;--mu:#a1a1aa;--ac:#22d3ee;--ac2:#3b82f6;--pu:#8b5cf6}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{margin:0;background:var(--bg);color:var(--tx);font:400 16px/1.7 Inter,system-ui,sans-serif;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:-20%;z-index:-1;background:radial-gradient(40% 35% at 15% 20%,rgba(34,211,238,.10),transparent 70%),radial-gradient(35% 35% at 85% 30%,rgba(139,92,246,.10),transparent 70%),radial-gradient(40% 40% at 50% 90%,rgba(59,130,246,.08),transparent 70%);animation:drift 24s ease-in-out infinite alternate}
-@keyframes drift{to{transform:translate3d(3%,-3%,0) scale(1.08)}}
-a{color:inherit}
-:focus-visible{outline:2px solid var(--ac);outline-offset:3px;border-radius:6px}
-h1,h2,h3,h4,.brand,.btn{font-family:"Space Grotesk",Inter,sans-serif}
-.w{max-width:1140px;margin:0 auto;padding:0 24px}
-section{padding:100px 0}
-.sh{text-align:center;max-width:620px;margin:0 auto 56px}
-.sh h2{font-size:clamp(32px,5vw,48px);line-height:1.1;margin:0 0 14px;letter-spacing:-.02em}
-.sh p{color:var(--mu);margin:0}
-.eyebrow{display:inline-block;color:var(--ac);font:600 13px "Space Grotesk";letter-spacing:.14em;text-transform:uppercase;margin-bottom:12px}
-.grad{background:linear-gradient(90deg,var(--ac),var(--ac2) 60%,var(--pu));-webkit-background-clip:text;background-clip:text;color:transparent}
-.glass{background:var(--card);border:1px solid var(--bd);border-radius:20px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:transform .35s,border-color .35s,box-shadow .35s}
-.glass:hover{border-color:rgba(34,211,238,.4);box-shadow:0 0 40px -12px rgba(34,211,238,.35);transform:translateY(-4px)}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:12px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--bd);color:var(--tx);background:rgba(255,255,255,.04);cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s}
-.btn:hover{transform:translateY(-2px) scale(1.03)}
-.btn.p{background:linear-gradient(90deg,var(--ac),var(--ac2));color:#021014;border:0;box-shadow:0 0 28px -6px rgba(34,211,238,.6)}
-.btn.p:hover{box-shadow:0 0 38px -4px rgba(34,211,238,.85)}
-.btn.s{padding:9px 18px;font-size:14px}
-/* nav */
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
-.nav.sc{background:rgba(5,5,5,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-color:var(--bd)}
-.nav .w{display:flex;align-items:center;justify-content:space-between;height:68px}
-.brand{font-weight:700;font-size:20px;text-decoration:none;letter-spacing:-.01em}
-.menu{display:flex;align-items:center;gap:28px}
-.menu a:not(.btn){color:var(--mu);text-decoration:none;font-size:15px;transition:color .2s}
-.menu a:not(.btn):hover{color:var(--tx)}
-.burger{display:none;background:none;border:1px solid var(--bd);border-radius:10px;width:44px;height:44px;color:var(--tx);cursor:pointer}
-/* hero */
-.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:120px 0 80px}
-.hero:before{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(70% 60% at 50% 40%,#000,transparent);mask-image:radial-gradient(70% 60% at 50% 40%,#000,transparent);animation:grid 30s linear infinite}
-@keyframes grid{to{background-position:56px 56px}}
-.hg{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
-.badge{display:inline-flex;align-items:center;gap:10px;padding:7px 16px;border:1px solid var(--bd);border-radius:99px;background:var(--card);font-size:14px;color:var(--mu)}
-.badge i{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 10px #34d399}
-h1{font-size:clamp(42px,7vw,76px);line-height:1.04;letter-spacing:-.03em;margin:22px 0}
-.lead{color:var(--mu);font-size:19px;max-width:520px;margin:0 0 34px}
-.cta{display:flex;flex-wrap:wrap;gap:14px}
-.vis{position:relative;min-height:380px;display:grid;place-items:center}
-.vis:before{content:"";position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.28),transparent 65%);filter:blur(30px)}
-.code{position:relative;width:100%;max-width:420px;padding:0;overflow:hidden;font:14px/1.8 ui-monospace,SFMono-Regular,Menlo,monospace}
-.code:hover{transform:none}
-.dots{display:flex;gap:7px;padding:14px 16px;border-bottom:1px solid var(--bd)}
-.dots i{width:11px;height:11px;border-radius:50%;background:rgba(255,255,255,.15)}
-.code pre{margin:0;padding:18px 20px;color:#c9d1d9;white-space:pre-wrap}
-.k{color:#c4b5fd}.s2{color:#67e8f9}.n{color:#93c5fd}
-.chip{position:absolute;padding:8px 14px;border-radius:12px;font:600 13px "Space Grotesk";animation:fl 6s ease-in-out infinite}
-.c1{top:8%;right:2%}.c2{bottom:14%;left:0;animation-delay:-2s}.c3{top:44%;right:-2%;animation-delay:-4s}.c4{top:2%;left:8%;animation-delay:-1s}
-@keyframes fl{50%{transform:translateY(-14px)}}
-.scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);width:24px;height:38px;border:2px solid var(--bd);border-radius:14px}
-.scroll:after{content:"";position:absolute;top:7px;left:50%;width:4px;height:8px;margin-left:-2px;border-radius:2px;background:var(--ac);animation:sc 1.8s infinite}
-@keyframes sc{60%{transform:translateY(12px);opacity:0}}
-/* about */
-.ag{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:center}
-.pf{padding:34px;text-align:center}
-.av{width:140px;height:140px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;font:700 44px "Space Grotesk";background:linear-gradient(135deg,rgba(34,211,238,.25),rgba(139,92,246,.25));border:1px solid var(--bd);overflow:hidden;box-shadow:0 0 0 4px rgba(34,211,238,.08),0 0 30px -8px rgba(34,211,238,.45)}
-.av img{width:100%;height:100%;object-fit:cover;display:block}
-.pf h3{margin:0;font-size:24px}.pf p{margin:4px 0 0;color:var(--mu)}
-.about p{color:var(--mu);font-size:18px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
-.stat{padding:20px;text-align:center}
-.stat b{display:block;font:700 34px "Space Grotesk"}.stat span{color:var(--mu);font-size:14px}
-/* grids */
-.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{padding:28px}
-.card h3{margin:14px 0 8px;font-size:20px}.card p{margin:0;color:var(--mu);font-size:15px}
-.num{font:700 14px "Space Grotesk";color:var(--ac);letter-spacing:.1em}
-.ic{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font:700 15px "Space Grotesk";color:var(--ac);background:rgba(34,211,238,.08);border:1px solid rgba(34,211,238,.25)}
-.sg{margin-bottom:40px}.sg h3{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);margin:0 0 16px}
-.sk{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
-.sk .card{padding:20px}.sk .top{display:flex;align-items:center;gap:12px}.sk h4{margin:0;font-size:17px}
-.sk p{margin:12px 0 0;font-size:14px;color:var(--mu)}
-.bar{height:5px;border-radius:4px;background:var(--bd);margin-top:14px;overflow:hidden}
-.bar i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--ac),var(--ac2));transition:width 1.2s .2s}
-.in .bar i{width:var(--v)}
-/* projects */
-.pg{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
-.pc{overflow:hidden;cursor:pointer;display:flex;flex-direction:column}
-.shot{position:relative;aspect-ratio:16/10;overflow:hidden;background:#0b0f14;border-bottom:1px solid var(--bd)}
-.shot:before{content:"";position:absolute;top:0;left:0;right:0;height:22px;background:rgba(255,255,255,.07);z-index:1}
-.shot img{position:absolute;top:22px;left:0;width:100%;height:calc(100% - 22px);object-fit:cover;object-position:top;transition:transform .7s}
-.pc:hover .shot img{transform:scale(1.06)}
-.shot.no{display:grid;place-items:center;color:var(--mu);font:500 20px "Space Grotesk";text-align:center;padding:20px}
-.pb{padding:26px;display:flex;flex-direction:column;flex:1}
-.pb h3{margin:0 0 8px;font-size:23px}.pb p{margin:0;color:var(--mu);font-size:15px}
-.tg{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:16px 0 22px}
-.tg li{font:500 12.5px Inter;padding:4px 12px;border-radius:99px;border:1px solid var(--bd);color:#cbd5e1;background:rgba(255,255,255,.03)}
-.acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
-.acts .btn{opacity:.78}.pc:hover .acts .btn,.acts .btn:focus-visible{opacity:1}
-.empty{grid-column:1/-1;text-align:center;color:var(--mu)}
-/* timeline */
-.tl{position:relative;max-width:760px;margin:0 auto;padding-left:34px}
-.tl:before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--ac),var(--pu));box-shadow:0 0 14px rgba(34,211,238,.6)}
-.ti{position:relative;margin-bottom:26px;padding:24px 28px}
-.ti:before{content:"";position:absolute;left:-34px;top:30px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--ac);box-shadow:0 0 14px var(--ac)}
-.ti b{font:700 14px "Space Grotesk";color:var(--ac);letter-spacing:.1em}.ti h3{margin:6px 0;font-size:21px}.ti p{margin:0;color:var(--mu)}
-/* contact */
-.cg{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
-.cf{padding:30px}
-label{display:block;font-size:14px;color:var(--mu);margin:0 0 6px}
-input,textarea{width:100%;padding:13px 14px;margin-bottom:16px;border-radius:12px;border:1px solid var(--bd);background:rgba(255,255,255,.04);color:var(--tx);font:inherit}
-input:focus,textarea:focus{outline:none;border-color:var(--ac);box-shadow:0 0 0 3px rgba(34,211,238,.15)}
-.hp{position:absolute;left:-9999px;height:0;width:0;opacity:0}
-.fm{min-height:24px;margin:12px 0 0;font-size:14px;color:var(--ac)}
-.ci{padding:30px}.ci h3{margin:0 0 18px}.ci dl{margin:0}.ci dt{font-size:13px;color:var(--mu)}.ci dd{margin:0 0 16px;font-weight:500}
-.soc{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:8px 0 0}
-.soc a{display:block;padding:8px 16px;border:1px solid var(--bd);border-radius:10px;text-decoration:none;font-size:14px;transition:border-color .2s,color .2s}
-.soc a:hover{border-color:var(--ac);color:var(--ac)}
-footer{border-top:1px solid var(--bd);padding:50px 0 34px;color:var(--mu)}
-.fg{display:flex;flex-wrap:wrap;gap:30px;justify-content:space-between;align-items:flex-start}
-footer nav{display:flex;flex-wrap:wrap;gap:22px}footer nav a{text-decoration:none}footer nav a:hover{color:var(--tx)}
-.copy{margin-top:34px;padding-top:22px;border-top:1px solid var(--bd);font-size:14px;text-align:center}
-/* admin shortcut: only shown to the signed-in owner */
-.adm{position:fixed;left:18px;bottom:18px;z-index:60;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;text-decoration:none;font-size:21px;line-height:1;background:rgba(5,5,5,.82);border:1px solid var(--bd);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:.7;transition:opacity .25s,border-color .25s,transform .25s}
-.adm:hover,.adm:focus-visible{opacity:1;border-color:var(--ac);transform:rotate(30deg)}
-.adm[hidden]{display:none}
-/* modal */
-dialog{max-width:920px;width:calc(100% - 24px);max-height:92vh;overflow:auto;border:1px solid var(--bd);border-radius:20px;background:#0a0c10;color:var(--tx);padding:0}
-dialog::backdrop{background:rgba(0,0,0,.8);backdrop-filter:blur(4px)}
-.dw{padding:30px}.dw h2{margin:0 0 14px;font-size:30px}
-.x{position:sticky;top:0;float:right;margin:14px 14px 0 0;z-index:2;padding:7px 14px;font-size:14px}
-.specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin:0 0 24px;padding:16px;border:1px solid var(--bd);border-radius:14px;background:var(--card)}
-.specs dt{font-size:13px;color:var(--mu)}.specs dd{margin:0;font-weight:600}
-.gal{display:grid;gap:24px;align-items:end;margin:0 0 28px}.gal.both{grid-template-columns:1fr 200px}
-.bf{border:1px solid var(--bd);border-radius:12px;overflow:hidden}.bf:before{content:"";display:block;height:22px;background:rgba(255,255,255,.07)}.bf img{display:block;width:100%}
-.ph{border:7px solid #1c2230;border-radius:28px;overflow:hidden}.ph img{display:block;width:100%}
-.cap{font-size:13px;color:var(--mu);margin:8px 0 0;text-align:center}
-.dw h4{font-size:19px;margin:26px 0 10px}.dw p{color:var(--mu);margin:0 0 12px}.dw ul.f{padding-left:20px;margin:0;color:var(--mu)}
-.lbar{display:flex;height:10px;border-radius:6px;overflow:hidden;background:var(--bd)}.lbar span{display:block}
-.lleg{display:flex;flex-wrap:wrap;gap:6px 18px;list-style:none;padding:0;margin:10px 0 0;color:var(--mu);font-size:14px}
-.lleg i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
-.js .rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
-.js .rv.in{opacity:1;transform:none}
-@media(max-width:980px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}.hg,.ag,.cg{grid-template-columns:1fr}.vis{min-height:320px}}
-@media(max-width:820px){.burger{display:block}.menu{position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:12px 24px 22px;background:rgba(5,5,5,.96);border-bottom:1px solid var(--bd);display:none}.menu.open{display:flex}.menu a:not(.btn){padding:14px 0;font-size:17px;border-bottom:1px solid var(--bd)}.menu .btn{margin-top:16px;justify-content:center}.pg{grid-template-columns:1fr}}
-@media(max-width:560px){section{padding:72px 0}.g4{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.btn{width:100%;justify-content:center}.acts .btn{width:auto;flex:1}.gal.both{grid-template-columns:1fr}.ph{max-width:220px;margin:0 auto}.chip{display:none}}
-@media(prefers-reduced-motion:reduce){*,:before,:after{animation:none!important;transition:none!important}html{scroll-behavior:auto}.js .rv{opacity:1;transform:none}.bar i{width:var(--v)}}
-</style>
+
+<!-- التنسيق -->
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<!-- ============ الـ Navbar ============ -->
 <header class="nav" id="nav"><div class="w">
-<a class="brand" href="#home" data-name>Zeyad Ekramy</a>
-<button class="burger" id="bg" aria-label="Open menu" aria-expanded="false" aria-controls="mn">&#9776;</button>
-<nav class="menu" id="mn" aria-label="Main">
-<a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#services">Services</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
-<a class="btn p s" href="#contact">Let's Talk</a></nav></div></header>
+  <!-- الاسم (ضغطه 5 مرات بسرعة بيفتح صفحة الأدمن — ده في js/main.js) -->
+  <a class="brand" href="#home" data-name>Zeyad Ekramy</a>
+  <!-- زرار المنيو للموبايل -->
+  <button class="burger" id="bg" aria-label="Open menu" aria-expanded="false" aria-controls="mn">&#9776;</button>
+  <!-- روابط المنيو: لو ضفت قسم جديد ضيف له رابط هنا -->
+  <nav class="menu" id="mn" aria-label="Main">
+    <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#services">Services</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+    <a class="btn p s" href="#contact">Let's Talk</a>
+  </nav>
+</div></header>
 
 <main>
+
+<!-- ============ Hero: أول قسم ============ -->
 <section class="hero" id="home"><div class="w hg">
-<div>
-<span class="badge"><i></i>Available for Freelance &amp; Web Development</span>
-<h1>Hi, I'm <span data-name>Zeyad Ekramy</span>.<br><span class="grad" id="role">Web Developer</span>.</h1>
-<p class="lead">I build modern, responsive, and high-performance websites that combine clean design with powerful functionality.</p>
-<div class="cta"><a class="btn p" href="#projects">View My Projects</a><a class="btn" href="#contact">Let's Work Together</a></div>
-</div>
-<div class="vis" aria-hidden="true">
-<div class="glass code"><div class="dots"><i></i><i></i><i></i></div>
+  <div>
+    <span class="badge"><i></i>Available for Freelance &amp; Web Development</span>
+    <!-- #role بيتغير من صفحة الأدمن (خانة Role) -->
+    <h1>Hi, I'm <span data-name>Zeyad Ekramy</span>.<br><span class="grad" id="role">Web Developer</span>.</h1>
+    <p class="lead">I build modern, responsive, and high-performance websites that combine clean design with powerful functionality.</p>
+    <div class="cta"><a class="btn p" href="#projects">View My Projects</a><a class="btn" href="#contact">Let's Work Together</a></div>
+  </div>
+
+  <!-- كارت الكود والأيقونات الطايرة (للزينة بس) -->
+  <div class="vis" aria-hidden="true">
+    <div class="glass code"><div class="dots"><i></i><i></i><i></i></div>
 <pre><span class="k">const</span> <span class="n">developer</span> = {
   name: <span class="s2">"Zeyad Ekramy"</span>,
   role: <span class="s2">"Web Developer"</span>,
@@ -185,166 +64,112 @@ dialog::backdrop{background:rgba(0,0,0,.8);backdrop-filter:blur(4px)}
   location: <span class="s2">"Egypt"</span>,
   available: <span class="k">true</span>
 };</pre></div>
-<span class="glass chip c1">&lt;HTML5/&gt;</span><span class="glass chip c2">CSS3</span><span class="glass chip c3">JavaScript</span><span class="glass chip c4">React</span>
-</div></div>
+    <span class="glass chip c1">&lt;HTML5/&gt;</span><span class="glass chip c2">CSS3</span><span class="glass chip c3">JavaScript</span><span class="glass chip c4">React</span>
+  </div>
+</div>
 <a class="scroll" href="#about" aria-label="Scroll to About"></a>
 </section>
 
+<!-- ============ About: نبذة عني ============ -->
 <section id="about"><div class="w ag">
-<div class="glass pf rv"><div class="av" id="av" aria-hidden="true">ZE</div><h3 data-name>Zeyad Ekramy</h3><p>Web Developer</p><p>Egypt</p></div>
-<div class="about rv"><span class="eyebrow">About</span><h2 style="font-size:clamp(32px,5vw,46px);margin:0 0 18px;line-height:1.1">About Me</h2>
-<p id="aboutp">I'm Zeyad Ekramy, a passionate Web Developer focused on creating modern digital experiences. I enjoy turning ideas into responsive, fast, and user-friendly websites. I focus on writing clean code, solving problems, and continuously improving my development skills.</p>
-<div class="stats"><div class="glass stat"><b class="grad">10+</b><span>Projects</span></div><div class="glass stat"><b class="grad">3+</b><span>Core Technologies</span></div><div class="glass stat"><b class="grad">100%</b><span>Passion for Code</span></div></div></div>
+  <!-- كارت البروفايل: #av هي الدايرة، والصورة بتيجي من صفحة الأدمن (Profile photo) -->
+  <div class="glass pf rv">
+    <div class="av" id="av" aria-hidden="true">ZE</div>
+    <h3 data-name>Zeyad Ekramy</h3><p>Web Developer</p><p>Egypt</p>
+  </div>
+  <div class="about rv">
+    <span class="eyebrow">About</span>
+    <h2 style="font-size:clamp(32px,5vw,46px);margin:0 0 18px;line-height:1.1">About Me</h2>
+    <!-- #aboutp بيتغير من صفحة الأدمن (خانة About me paragraph) -->
+    <p id="aboutp">I'm Zeyad Ekramy, a passionate Web Developer focused on creating modern digital experiences. I enjoy turning ideas into responsive, fast, and user-friendly websites. I focus on writing clean code, solving problems, and continuously improving my development skills.</p>
+    <!-- الأرقام الثلاثة: غيّر الرقم والكلمة من هنا مباشرة -->
+    <div class="stats">
+      <div class="glass stat"><b class="grad">10+</b><span>Projects</span></div>
+      <div class="glass stat"><b class="grad">3+</b><span>Core Technologies</span></div>
+      <div class="glass stat"><b class="grad">100%</b><span>Passion for Code</span></div>
+    </div>
+  </div>
 </div></section>
 
+<!-- ============ Skills: المهارات (المحتوى بيتولد من js/content.js) ============ -->
 <section id="skills"><div class="w">
-<div class="sh rv"><span class="eyebrow">Skills</span><h2>Tech Stack</h2><p>Technologies and tools I use to build modern web experiences.</p></div>
-<div id="sk"></div></div></section>
+  <div class="sh rv"><span class="eyebrow">Skills</span><h2>Tech Stack</h2><p>Technologies and tools I use to build modern web experiences.</p></div>
+  <div id="sk"></div>
+</div></section>
 
+<!-- ============ Projects: المشاريع (بتتحمل من Supabase، وتتدار من صفحة الأدمن) ============ -->
 <section id="projects"><div class="w">
-<div class="sh rv"><span class="eyebrow">Work</span><h2>Featured Projects</h2><p>A selection of projects that showcase my skills and development experience.</p></div>
-<div class="pg" id="list"><p class="empty">Loading projects…</p></div></div></section>
+  <div class="sh rv"><span class="eyebrow">Work</span><h2>Featured Projects</h2><p>A selection of projects that showcase my skills and development experience.</p></div>
+  <div class="pg" id="list"><p class="empty">Loading projects…</p></div>
+</div></section>
 
+<!-- ============ Services: الخدمات (من js/content.js) ============ -->
 <section id="services"><div class="w">
-<div class="sh rv"><span class="eyebrow">Services</span><h2>What I Do</h2></div>
-<div class="g4" id="sv"></div></div></section>
+  <div class="sh rv"><span class="eyebrow">Services</span><h2>What I Do</h2></div>
+  <div class="g4" id="sv"></div>
+</div></section>
 
+<!-- ============ Experience: رحلتي (من js/content.js) ============ -->
 <section id="experience"><div class="w">
-<div class="sh rv"><span class="eyebrow">Experience</span><h2>My Development Journey</h2></div>
-<div class="tl" id="tl"></div></div></section>
+  <div class="sh rv"><span class="eyebrow">Experience</span><h2>My Development Journey</h2></div>
+  <div class="tl" id="tl"></div>
+</div></section>
 
+<!-- ============ Why me: ليه تختارني (من js/content.js) ============ -->
 <section id="why"><div class="w">
-<div class="sh rv"><span class="eyebrow">Why me</span><h2>Why Choose Me?</h2></div>
-<div class="g4" id="wy"></div></div></section>
+  <div class="sh rv"><span class="eyebrow">Why me</span><h2>Why Choose Me?</h2></div>
+  <div class="g4" id="wy"></div>
+</div></section>
 
+<!-- ============ Contact: التواصل ============ -->
 <section id="contact"><div class="w">
-<div class="sh rv"><span class="eyebrow">Contact</span><h2>Let's Build Something Great</h2><p>Have a project idea or need a modern website? Let's talk and turn your idea into a real digital experience.</p></div>
-<div class="cg">
-<form class="glass cf rv" id="cf" novalidate>
-<label for="f1">Name</label><input id="f1" name="name" autocomplete="name" required maxlength="100">
-<label for="f2">Email</label><input id="f2" name="email" type="email" autocomplete="email" required maxlength="200">
-<label for="f3">Subject</label><input id="f3" name="subject" required maxlength="200">
-<label for="f4">Message</label><textarea id="f4" name="message" rows="5" required maxlength="5000"></textarea>
-<input class="hp" id="f5" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-<button class="btn p" type="submit" id="fb">Send Message</button><p class="fm" id="fm" role="status"></p></form>
-<div class="glass ci rv"><h3>Contact information</h3><dl>
-<dt>Email</dt><dd><a id="ce" href="mailto:zeyad.ekramy@example.com">zeyad.ekramy@example.com</a></dd>
-<dt>Location</dt><dd>Egypt</dd><dt id="wt" hidden>WhatsApp</dt><dd id="wd" hidden><a id="cw" href="#"></a></dd></dl>
-<ul class="soc" id="so"></ul></div></div></div></section>
+  <div class="sh rv"><span class="eyebrow">Contact</span><h2>Let's Build Something Great</h2><p>Have a project idea or need a modern website? Let's talk and turn your idea into a real digital experience.</p></div>
+  <div class="cg">
+
+    <!-- فورم الرسائل: الرسائل بتتحفظ في Supabase وبتشوفها في صفحة الأدمن -->
+    <form class="glass cf rv" id="cf" novalidate>
+      <label for="f1">Name</label><input id="f1" name="name" autocomplete="name" required maxlength="100">
+      <label for="f2">Email</label><input id="f2" name="email" type="email" autocomplete="email" required maxlength="200">
+      <label for="f3">Subject</label><input id="f3" name="subject" required maxlength="200">
+      <label for="f4">Message</label><textarea id="f4" name="message" rows="5" required maxlength="5000"></textarea>
+      <!-- حقل مصيدة للبوتات: مخفي، لو اتملى الفورم مبيتبعتش. متمسحوش -->
+      <input class="hp" id="f5" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn p" type="submit" id="fb">Send Message</button>
+      <p class="fm" id="fm" role="status"></p>
+    </form>
+
+    <!-- بيانات التواصل: الإيميل والواتساب والسوشيال بيتغيروا من صفحة الأدمن -->
+    <div class="glass ci rv"><h3>Contact information</h3>
+      <dl>
+        <dt>Email</dt><dd><a id="ce" href="mailto:zeyad.ekramy@example.com">zeyad.ekramy@example.com</a></dd>
+        <dt>Location</dt><dd>Egypt</dd>
+        <dt id="wt" hidden>WhatsApp</dt><dd id="wd" hidden><a id="cw" href="#"></a></dd>
+      </dl>
+      <ul class="soc" id="so"></ul>
+    </div>
+  </div>
+</div></section>
 </main>
 
-<footer><div class="w"><div class="fg">
-<div><a class="brand" href="#home" data-name>Zeyad Ekramy</a><p style="margin:10px 0 0;max-width:340px">Building modern digital experiences with code and creativity.</p></div>
-<nav aria-label="Footer"><a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav></div>
-<p class="copy">© 2026 <span data-name>Zeyad Ekramy</span>. All Rights Reserved.</p></div></footer>
+<!-- ============ الفوتر ============ -->
+<footer><div class="w">
+  <div class="fg">
+    <div><a class="brand" href="#home" data-name>Zeyad Ekramy</a><p style="margin:10px 0 0;max-width:340px">Building modern digital experiences with code and creativity.</p></div>
+    <nav aria-label="Footer"><a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a></nav>
+  </div>
+  <p class="copy">© 2026 <span data-name>Zeyad Ekramy</span>. All Rights Reserved.</p>
+</div></footer>
 
+<!-- زرار الإعدادات ⚙: مخفي، وبيظهر بس لو إنت مسجل دخول (الشرط في js/main.js) -->
 <a class="adm" id="adm" href="admin.html" hidden aria-label="Open admin settings" title="Settings">&#9881;</a>
+
+<!-- نافذة تفاصيل المشروع -->
 <dialog id="dlg" aria-labelledby="dt"><button class="btn s x" id="dx">Close</button><div class="dw" id="db"></div></dialog>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="config.js"></script>
-<script>
-const $=id=>document.getElementById(id);
-const esc=s=>String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const url=u=>/^https?:\/\//.test(u||"")?esc(u):"";
-const csv=s=>String(s||"").split(",").map(t=>t.trim()).filter(Boolean);
-const lines=s=>String(s||"").split("\n").map(t=>t.trim()).filter(Boolean);
-const li=a=>a.map(t=>`<li>${esc(t)}</li>`).join("");
-const auto=(p,w)=>url(p.live_url)&&!p.is_desktop?"https://image.thum.io/get/width/"+w+"/"+url(p.live_url):"";
-const cover=p=>url(p.image_url)||url(p.desktop_image_url)||auto(p,900);
-const desk=p=>url(p.desktop_image_url)||url(p.image_url)||auto(p,1200);
-/* one shared Supabase client (keeps the owner's login session) */
-let sb=null;
-try{if(window.CFG&&/^https?:/.test(CFG.SUPABASE_URL))sb=supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY);}catch(e){}
-const SHOW_LEVELS=true; // set to false to hide the progress bars
-const SKILLS=[["Frontend",[["HTML5","Semantic, accessible page structure","HT",90],["CSS3","Layouts, animation and responsive styling","CS",85],["JavaScript","Interactive, dynamic web interfaces","JS",80],["React.js","Component-based user interfaces","Re",65],["Responsive Design","Mobile-first layouts for every screen","RD",90]]],
-["Backend",[["Node.js","Server-side JavaScript runtime","No",60],["Express.js","Lightweight web server framework","Ex",60],["REST APIs","Clean, well-structured API design","API",65]]],
-["Database",[["MySQL","Relational data modeling and queries","My",55],["MongoDB","Flexible document databases","Mo",55]]],
-["Tools",[["Git","Version control and collaboration","Gi",75],["GitHub","Code hosting and workflow","GH",75],["VS Code","Daily development environment","VS",90],["Figma","Interface design and prototyping","Fi",55]]]];
-const SERV=[["Web Development","Building modern, scalable, and responsive websites tailored to your needs."],["Front-End Development","Creating clean, interactive, and user-friendly interfaces with modern technologies."],["Responsive Design","Making websites look and work perfectly across desktop, tablet, and mobile devices."],["Website Optimization","Improving website speed, performance, accessibility, and overall user experience."]];
-const WHY=[["Clean Code","Writing organized, maintainable, and scalable code."],["Modern Design","Creating interfaces that look professional and feel intuitive."],["Responsive","Ensuring every website works smoothly on all screen sizes."],["Performance","Building fast and optimized web experiences."]];
-const TL=[["2024","Started Web Development","Built a strong foundation in HTML, CSS, and JavaScript."],["2025","Advanced Web Development","Started building larger projects and learning modern frameworks."],["2026","Professional Growth","Focused on creating production-ready websites and improving full-stack development skills."]];
-const DEFAULTS=[
-{title:"Opal Gallery",description:"A gallery website that presents work cleanly and loads fast on any device.",tags:"Website, Responsive",live_url:"https://opal-gallery19.vercel.app/"},
-{title:"Dr. Yasser Dental Clinic",description:"A clinic website that helps patients find services and contact the doctor.",tags:"Website, Clinic, Responsive",live_url:"https://dr-yasser-dental-clinic.vercel.app/"},
-{title:"Clothing Store",description:"An online clothing storefront with product browsing built for phones first.",tags:"E-commerce, Responsive",live_url:"https://clothing-website-amber-theta.vercel.app/"},
-{title:"Phone Shop System",description:"A desktop system built for a phone shop to manage daily sales and stock. It runs on the shop's computer, so there is no public site.",tags:"Desktop app, Server",live_url:"https://phone-shop-server-one.vercel.app/",live_label:"Server",is_desktop:true}];
-let L=[];
-$("sk").innerHTML=SKILLS.map(([g,a])=>`<div class="sg rv"><h3>${g}</h3><div class="sk">${a.map(s=>`<div class="glass card"><div class="top"><span class="ic">${s[2]}</span><h4>${s[0]}</h4></div><p>${s[1]}</p>${SHOW_LEVELS?`<div class="bar" role="img" aria-label="${s[0]} proficiency ${s[3]} percent"><i style="--v:${s[3]}%"></i></div>`:""}</div>`).join("")}</div></div>`).join("");
-const cardsHtml=(a,n)=>a.map((x,i)=>`<div class="glass card rv">${n?`<span class="num">0${i+1}</span>`:`<span class="ic">${x[0][0]}</span>`}<h3>${x[0]}</h3><p>${x[1]}</p></div>`).join("");
-$("sv").innerHTML=cardsHtml(SERV,1);$("wy").innerHTML=cardsHtml(WHY,0);
-$("tl").innerHTML=TL.map(t=>`<div class="glass ti rv"><b>${t[0]}</b><h3>${t[1]}</h3><p>${t[2]}</p></div>`).join("");
-function card(p,i){
- const c=cover(p),live=url(p.live_url),code=url(p.code_url);
- const sh=c?`<div class="shot"><img loading="lazy" alt="Screenshot of ${esc(p.title)}" src="${c}" onerror="this.remove()"></div>`:`<div class="shot no">${p.is_desktop?"Desktop application":esc(p.title)}</div>`;
- const tags=csv(p.tech).length?csv(p.tech):csv(p.tags);
- return `<article class="glass pc rv" data-i="${i}">${sh}<div class="pb"><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p><ul class="tg">${li(tags.slice(0,6))}</ul><div class="acts">${live?`<a class="btn p s" href="${live}" target="_blank" rel="noopener">${esc(p.live_label||"Live Demo")}</a>`:""}${code?`<a class="btn s" href="${code}" target="_blank" rel="noopener">View Code</a>`:""}<button class="btn s more" data-i="${i}">Details</button></div></div></article>`;}
-function openP(i){
- const p=L[i],live=url(p.live_url),code=url(p.code_url),d=desk(p),m=url(p.mobile_image_url);
- const gal=(d||m)?`<div class="gal ${d&&m?"both":""}">${d?`<div><div class="bf"><img src="${d}" alt="${esc(p.title)} on desktop" onerror="this.closest('.gal').remove()"></div><p class="cap">Desktop</p></div>`:""}${m?`<div><div class="ph"><img src="${m}" alt="${esc(p.title)} on mobile"></div><p class="cap">Mobile</p></div>`:""}</div>`:"";
- const sp=[["Type",p.is_desktop?"Desktop application":"Website"],["Hosting",p.hosting],["Client",p.client],["Year",p.year]].filter(x=>x[1]).map(x=>`<div><dt>${x[0]}</dt><dd>${esc(x[1])}</dd></div>`).join("");
- const COL=["#22d3ee","#f5c26b","#7aa2ff","#ff8fa3","#b79cff","#8bd17c"];
- const ls=csv(p.languages).map(x=>x.split(":")).map(a=>[a[0].trim(),parseFloat(a[1])||0]).filter(x=>x[0]);
- const lg=ls.length?`<h4>Languages used</h4><div class="lbar">${ls.map((l,i)=>`<span style="flex:${l[1]||1};background:${COL[i%6]}"></span>`).join("")}</div><ul class="lleg">${ls.map((l,i)=>`<li><i style="background:${COL[i%6]}"></i>${esc(l[0])}${l[1]?" "+l[1]+"%":""}</li>`).join("")}</ul>`:"";
- const paras=lines(p.long_description||p.description).map(t=>`<p>${esc(t)}</p>`).join("");
- const f=lines(p.features),t=csv(p.tech);
- $("db").innerHTML=`<h2 id="dt">${esc(p.title)}</h2><dl class="specs">${sp}</dl>${gal}${paras}${f.length?`<h4>Features</h4><ul class="f">${li(f)}</ul>`:""}${lg}${t.length?`<h4>Built with</h4><ul class="tg">${li(t)}</ul>`:""}<div class="acts" style="margin-top:24px">${live?`<a class="btn p" href="${live}" target="_blank" rel="noopener">${esc(p.live_label||"Live Demo")}</a>`:""}${code?`<a class="btn" href="${code}" target="_blank" rel="noopener">View Code</a>`:""}</div>`;
- $("dlg").showModal();if(p.id)history.replaceState(null,"","#p="+p.id);}
-$("list").onclick=e=>{if(e.target.closest("a"))return;const a=e.target.closest(".pc");if(a)openP(+a.dataset.i);};
-$("dx").onclick=()=>$("dlg").close();
-$("dlg").onclose=()=>history.replaceState(null,"",location.pathname+location.search);
-$("dlg").onclick=e=>{if(e.target===$("dlg"))$("dlg").close();};
-/* nav */
-const nav=$("nav"),mn=$("mn"),bg=$("bg");
-const onS=()=>nav.classList.toggle("sc",scrollY>20);onS();addEventListener("scroll",onS,{passive:true});
-bg.onclick=()=>{const o=mn.classList.toggle("open");bg.setAttribute("aria-expanded",o);};
-mn.onclick=e=>{if(e.target.closest("a")){mn.classList.remove("open");bg.setAttribute("aria-expanded","false");}};
-/* reveal */
-const io="IntersectionObserver"in window?new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}}),{threshold:.12}):null;
-const watch=()=>document.querySelectorAll(".rv:not(.in)").forEach(el=>io?io.observe(el):el.classList.add("in"));
-/* owner-only access: gear button shows only when signed in; 5 quick clicks on the name opens the login page */
-if(sb)sb.auth.getSession().then(({data})=>{if(data&&data.session)$("adm").hidden=false;}).catch(()=>{});
-let bc=0,bt;
-document.querySelectorAll(".brand").forEach(b=>b.addEventListener("click",()=>{
- bc++;clearTimeout(bt);bt=setTimeout(()=>{bc=0;},1800);
- if(bc>=5){bc=0;location.href="admin.html";}}));
-/* settings */
-const soc=(v,b)=>/^https?:/.test(v)?v:b+String(v).replace(/^@/,"");
-function settings(s){
- if(!s)return;
- if(s.name){document.querySelectorAll("[data-name]").forEach(e=>e.textContent=s.name);document.title=s.name+" | Web Developer";}
- if(s.headline)$("role").textContent=s.headline.replace(/\.$/,"");
- if(s.about)$("aboutp").textContent=s.about;
- if(s.avatar_url&&/^https?:\/\//.test(s.avatar_url)){
-  const a=$("av"),im=new Image();im.alt=s.name||"Zeyad Ekramy";
-  im.onload=()=>{a.textContent="";a.appendChild(im);a.removeAttribute("aria-hidden");};
-  im.src=s.avatar_url;}
- if(s.email){$("ce").textContent=s.email;$("ce").href="mailto:"+s.email;}
- if(s.whatsapp){const d=String(s.whatsapp).replace(/\D/g,"");$("cw").textContent=s.whatsapp;$("cw").href="https://wa.me/"+d;$("wt").hidden=$("wd").hidden=false;}
- const so=[["GitHub",s.github,"https://github.com/"],["LinkedIn",s.linkedin,"https://linkedin.com/in/"],["Facebook",s.facebook,"https://facebook.com/"],["Instagram",s.instagram,"https://instagram.com/"]].filter(x=>x[1]);
- $("so").innerHTML=so.map(x=>`<li><a href="${esc(soc(x[1],x[2]))}" target="_blank" rel="noopener">${x[0]}</a></li>`).join("");}
-/* contact form */
-$("cf").onsubmit=async e=>{
- e.preventDefault();const f=e.target,fm=$("fm"),v=n=>f.elements[n].value.trim();
- if(v("website"))return;
- if(!v("name")||!v("subject")||!v("message")||!/^\S+@\S+\.\S+$/.test(v("email"))){fm.textContent="Please fill every field with a valid email.";return;}
- $("fb").disabled=true;fm.textContent="Sending...";
- try{
-  if(!sb)throw new Error("no client");
-  const{error}=await sb.from("messages").insert({name:v("name"),email:v("email"),subject:v("subject"),message:v("message")});
-  if(error)throw error;f.reset();fm.textContent="Thank you! Your message was sent. I will get back to you soon.";
- }catch(x){fm.textContent="Could not send. Please email me directly instead.";}
- $("fb").disabled=false;};
-async function load(){
- let list=DEFAULTS;
- if(sb){try{
-  const[pr,st]=await Promise.all([
-   sb.from("projects").select("*").order("sort_order",{ascending:true}).order("created_at",{ascending:false}),
-   sb.from("site_settings").select("*").eq("id",1).maybeSingle()]);
-  if(!pr.error&&pr.data&&pr.data.length)list=pr.data;
-  settings(st.data);}catch(e){}}
- L=list;$("list").innerHTML=list.map(card).join("");watch();
- const m=location.hash.match(/^#p=(.+)$/);if(m){const k=L.findIndex(p=>String(p.id)===m[1]);if(k>-1)openP(k);}}
-watch();load();
-</script>
+
+<!-- ===== السكريبتات (الترتيب مهم) ===== -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>  <!-- مكتبة Supabase -->
+<script src="config.js"></script>      <!-- إعدادات الاتصال -->
+<script src="js/content.js"></script>  <!-- المحتوى الثابت اللي بتعدله -->
+<script src="js/main.js"></script>     <!-- منطق الموقع -->
 </body>
 </html>
